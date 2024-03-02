@@ -21,6 +21,11 @@ class App extends React.Component {
         };
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        console.log(prevState); // da acesso ao State antes do update o msm do prevProps
+        console.log("component was updated!");
+    }
+
     handleStateChange() {
         this.setState({
             tasks: [],
