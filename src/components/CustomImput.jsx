@@ -1,12 +1,14 @@
-const CustomImput = ({ label, value }) => {
+import "./CustomImput.scss";
+
+const CustomImput = ({ label, value, onChange }) => {
     return (
         <div className="custom-input-container">
-            <input type="text" className="custom-input" />
+            <input type="text" className="custom-input" onChange={(e) => onChange(e)} />
 
             {label ? (
                 <label
                     className={`${
-                        value.length !== "" ? "shrink" : ""
+                        value.length > 0 ? "shrink" : ""
                     } custom-input-label`}
                 >
                     {label}
