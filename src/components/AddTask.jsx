@@ -8,13 +8,13 @@ import CustomButton from "./CustomButton";
 
 import "./AddTask.scss";
 
-const AddTask = () => {
-    const [task, setTasks] = useState("");
+const AddTask = ({ fetchTasks }) => {
+    const [task, setTask] = useState("");
 
     const alert = useAlert();
 
     const onChange = (e) => {
-        setTasks(e.target.value);
+        setTask(e.target.value);
     };
 
     const handleTaskSddition = async () => {
@@ -29,7 +29,13 @@ const AddTask = () => {
                 description: task,
                 iscompleted: false,
             });
-        } catch (error) {}
+
+            await fetchTasks();
+
+            setTask('');
+        } catch (error) {
+            alert.error("Algo deu errado.")
+        }
     };
 
     return (

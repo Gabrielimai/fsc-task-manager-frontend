@@ -30,7 +30,7 @@ function Tasks() {
 
             <div className="last-tasks">
                 <h3>Últimas tarefas</h3>
-                <AddTask/>
+                <AddTask fetchTasks={fetchTasks}/>
                 <div className="tasks-list">
                     {tasks
                         .filter((task) => task.isCompleted === false)
