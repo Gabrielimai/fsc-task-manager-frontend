@@ -3,7 +3,6 @@ import axios from "axios";
 
 import "./Tasks.scss";
 
-
 import TaskItem from "./TaskItem";
 import AddTask from "./AddTask";
 
@@ -30,12 +29,12 @@ function Tasks() {
 
             <div className="last-tasks">
                 <h3>Últimas tarefas</h3>
-                <AddTask fetchTasks={fetchTasks}/>
+                <AddTask fetchTasks={fetchTasks} />
                 <div className="tasks-list">
                     {tasks
                         .filter((task) => task.isCompleted === false)
                         .map((lastTask) => (
-                            <TaskItem task={lastTask} />
+                            <TaskItem task={lastTask} fetchTasks={fetchTasks} />
                         ))}
                 </div>
             </div>
@@ -46,7 +45,7 @@ function Tasks() {
                     {tasks
                         .filter((task) => task.isCompleted)
                         .map((completedTasks) => (
-                            <TaskItem task={completedTasks} />
+                            <TaskItem task={completedTasks} fetchTasks={fetchTasks} />
                         ))}
                 </div>
             </div>
