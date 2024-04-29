@@ -1,6 +1,11 @@
 import "./CustomImput.scss";
 
-const CustomImput = ({ label, value, onChange }) => {
+const CustomImput = ({ label, value, onChange, onEnterPress }) => {
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            onEnterPress();
+        }
+    };
     return (
         <div className="custom-input-container">
             <input
@@ -8,6 +13,7 @@ const CustomImput = ({ label, value, onChange }) => {
                 className="custom-input"
                 value={value}
                 onChange={(e) => onChange(e)}
+                onKeyDown={(e) => handleKeyDown(e)}
             />
 
             {label ? (
