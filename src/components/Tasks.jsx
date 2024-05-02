@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import {useAlert} from 'react-alert'
+import { useAlert } from "react-alert";
 
 import "./Tasks.scss";
 
@@ -18,7 +18,7 @@ function Tasks() {
 
             setTasks(data);
         } catch (_error) {
-            alert.error('Não foi possível recuperar as tarefas.')
+            alert.error("Não foi possível recuperar as tarefas.");
         }
     };
 
@@ -37,7 +37,7 @@ function Tasks() {
                     {tasks
                         .filter((task) => task.isCompleted === false)
                         .map((lastTask) => (
-                            <TaskItem task={lastTask} fetchTasks={fetchTasks} />
+                            <TaskItem key={lastTask._id} task={lastTask} fetchTasks={fetchTasks} />
                         ))}
                 </div>
             </div>
@@ -48,7 +48,11 @@ function Tasks() {
                     {tasks
                         .filter((task) => task.isCompleted)
                         .map((completedTasks) => (
-                            <TaskItem task={completedTasks} fetchTasks={fetchTasks} />
+                            <TaskItem 
+                            key={completedTasks._id}
+                                task={completedTasks}
+                                fetchTasks={fetchTasks}
+                            />
                         ))}
                 </div>
             </div>
