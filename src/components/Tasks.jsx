@@ -12,7 +12,7 @@ function Tasks() {
 
     const alert = useAlert();
 
-    const fetchTasks = async () => {
+    const fetchTasks = async () => {    
         try {
             const { data } = await axios.get("http://localhost:8000/tasks");
 
